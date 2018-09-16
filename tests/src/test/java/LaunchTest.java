@@ -1,7 +1,11 @@
 import config.Config;
+import org.junit.Assert;
 import org.junit.Test;
 
+import pages.BasePage;
 import pages.Home;
+
+import static config.WebDriverSingleton.getInstance;
 
 public class LaunchTest extends Config {
 
@@ -10,11 +14,11 @@ public class LaunchTest extends Config {
     public void launchTest(){
 
         new Home()
-                .openSignInPage();
+                .openSignInPage()
+                .submitEmail("tasdasfgdsafs@gmail.com");
+
+        Assert.assertEquals("Login - My Store", getInstance().getTitle());
 
     }
-
-
-
 
 }

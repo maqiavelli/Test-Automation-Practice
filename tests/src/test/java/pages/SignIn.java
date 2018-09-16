@@ -20,4 +20,12 @@ public class SignIn extends BasePage {
     public WebElement passwordLogin;
 
 
+
+    public SignUp submitEmail(String email){
+        emailCreate.sendKeys(email);
+        submitCreate.click();
+        return new SignUp();
+    }
+
+
 }

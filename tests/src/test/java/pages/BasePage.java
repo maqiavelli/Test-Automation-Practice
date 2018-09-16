@@ -10,13 +10,15 @@ import static config.WebDriverSingleton.getInstance;
 
 public class BasePage {
 
+    @FindBy(id = "columns")
+    public WebElement columns;
+
     public BasePage(){
         PageFactory.initElements(getInstance(), this);
         waitForVisibilityOfElement(columns);
     }
 
-    @FindBy(id = "columns")
-    public WebElement columns;
+
 
 
 }
