@@ -1,20 +1,22 @@
 package pages;
 
-
-
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
+
+import static config.Config.waitForVisibilityOfElement;
 import static config.WebDriverSingleton.getInstance;
 
 public class BasePage {
 
     public BasePage(){
         PageFactory.initElements(getInstance(), this);
-        WebDriverWait wait = new WebDriverWait(getInstance(), 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#columns")));
+        waitForVisibilityOfElement(columns);
     }
+
+    @FindBy(id = "columns")
+    public WebElement columns;
+
 
 }
