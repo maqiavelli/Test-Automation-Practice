@@ -21,7 +21,7 @@ public class SignIn extends BasePage {
 
 
 
-    public SignUp submitEmail(String email){
+    public SignUp submitRegistrationEmail(String email){
         emailCreate.sendKeys(email);
         submitCreate.click();
         return new SignUp();
