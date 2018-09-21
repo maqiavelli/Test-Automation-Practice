@@ -1,5 +1,6 @@
 package pages;
 
+import com.sun.org.glassfish.external.probe.provider.annotations.ProbeListener;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -8,16 +9,27 @@ public class SignIn extends BasePage {
     public SignIn(){super();}
 
     @FindBy(id = "email_create")
-    public WebElement emailCreate;
+    WebElement emailCreate;
 
     @FindBy(id = "SubmitCreate")
-    public WebElement submitCreate;
+    WebElement submitCreate;
 
     @FindBy(id = "email")
-    public WebElement emailLogin;
+    WebElement emailLogin;
 
     @FindBy(id = "passwd")
-    public WebElement passwordLogin;
+    WebElement passwordLogin;
+
+    @FindBy(id = "SubmitLogin")
+    WebElement submitLoginButton;
+
+
+
+    public SignedIn logInWithValidData(){
+
+        return submitSignInForm("testing123454321testing@gmail.com", "qwert12345");
+
+    }
 
 
 
@@ -25,6 +37,15 @@ public class SignIn extends BasePage {
         emailCreate.sendKeys(email);
         submitCreate.click();
         return new SignUp();
+    }
+
+    public SignedIn submitSignInForm(String email, String password){
+
+        this.emailLogin.sendKeys(email);
+        this.passwordLogin.sendKeys(password);
+        this.submitLoginButton.click();
+        return new SignedIn();
+
     }
 
 

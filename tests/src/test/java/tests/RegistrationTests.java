@@ -1,3 +1,5 @@
+package tests;
+
 import config.Config;
 import config.FormData;
 import org.junit.Assert;
@@ -8,17 +10,17 @@ import pages.SignUp;
 
 import static config.WebDriverSingleton.getInstance;
 
-public class LaunchTest extends Config {
+public class RegistrationTests extends Config {
 
 
     @Test
-    public void launchTest(){
+    public void smokeTest(){
 
         new Home()
                 .openSignInPage()
                 .submitRegistrationEmail("tasdasfgdsafs@gmail.com");
 
-        Assert.assertEquals("Login - My Store", getInstance().getTitle());
+        Assert.assertTrue(getInstance().getTitle().equals("Login - My Store"));
 
     }
 
@@ -34,6 +36,19 @@ public class LaunchTest extends Config {
                         "random", "random", "random", "random"));
 
 
+    }
+
+    @Test
+    public void testRegistrationWithInvalidData(){
+
+        new Home()
+                .openSignInPage()
+                .submitRegistrationEmail("tasdasfgdsafs@gmail.com")
+                .submitValidForm(new FormData("", "random", "random",
+                        0, 0 , 0, "random", "random",
+                        "random", "random", "random", "random",
+                        "random", "random", "random", "random"));
+        Assert.assertTrue(getInstance().getTitle().equals("Login - My Store"));
     }
 
 }
