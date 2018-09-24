@@ -11,7 +11,13 @@ import static config.WebDriverSingleton.getInstance;
 public class BasePage {
 
     @FindBy(id = "columns")
-    public WebElement columns;
+    WebElement columns;
+
+    @FindBy(id = "search_query_top")
+    WebElement searchBar;
+
+    @FindBy(xpath = "//*[@id=\"searchbox\"]/button")
+    WebElement searchSubmitButton;
 
     public BasePage(){
         PageFactory.initElements(getInstance(), this);
