@@ -20,7 +20,7 @@ public class RegistrationTests extends Config {
                 .openSignInPage()
                 .submitRegistrationEmail("tasdasfgdsafs@gmail.com");
 
-        Assert.assertTrue(getInstance().getTitle().equals("Login - My Store"));
+        Assert.assertEquals("Login - My Store", getInstance().getTitle());
 
     }
 
@@ -48,7 +48,7 @@ public class RegistrationTests extends Config {
                         0, 0 , 0, "random", "random",
                         "random", "random", "random", "random",
                         "random", "random", "random", "random"));
-        Assert.assertTrue(getInstance().getTitle().equals("Login - My Store"));
+        Assert.assertEquals("Login - My Store", getInstance().getTitle());
     }
 
 }
